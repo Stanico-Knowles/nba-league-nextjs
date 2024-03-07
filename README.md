@@ -4,7 +4,13 @@ This is a Next.js application that brings the excitement of the NBA to your fing
 
 ## Getting Started
 
-First, run the development server:
+First, install dependencies:
+
+```
+yarn
+```
+
+Then, run the development server:
 
 ```
 yarn dev
