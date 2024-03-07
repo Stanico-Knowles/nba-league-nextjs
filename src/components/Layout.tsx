@@ -11,7 +11,7 @@ export default async function Layout({
 }) {
   const resp = await fetch(
     "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/scoreboard",
-    { next: { revalidate: 60 } }
+    { next: { revalidate: 15 } }
   );
   const data: z.infer<typeof Scoreboard> = await resp.json();
   return (
