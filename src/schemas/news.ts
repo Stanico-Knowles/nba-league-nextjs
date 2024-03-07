@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-const News = z.object({
+export const News = z.object({
   header: z.string(),
   link: z.object({
     language: z.string(),
