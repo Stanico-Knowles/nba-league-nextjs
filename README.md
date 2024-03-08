@@ -18,4 +18,4 @@ yarn dev
 
 ## Project Background
 
-This project was inspired by [leerob/ncaam](https://github.com/leerob/ncaam), a fantastic project motivated me to create my own NBA-themed web application. I admire the work done by the author and wanted to channel that inspiration into building something enjoyable and engaging for myself and anyone else interested in joining in.
+This project was inspired by [leerob/ncaam](https://github.com/leerob/ncaam), a fantastic project that motivated me to create my own NBA-themed web application. I admire the work done by the author and wanted to channel that inspiration into building something enjoyable and engaging for myself and anyone else interested in joining in.

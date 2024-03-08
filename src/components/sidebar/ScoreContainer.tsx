@@ -50,7 +50,7 @@ export default function ScoreContainer({
       eventId: event.competitions[0].id,
       status:
         event.competitions[0].status.type.state === "pre"
-          ? event.competitions[0].status.type.shortDetail.split("-")[1].trim() // Honestly didn't understand the point of the left side
+          ? event.competitions[0].status.type.shortDetail.split("-")[1].trim() // Honestly didn't understand the point of the left side. Update: It's the date. Embarrassing :'(
           : event.competitions[0].status.type.name === "STATUS_HALFTIME"
           ? "Halftime"
           : event.competitions[0].status.type.name === "STATUS_FINAL"
