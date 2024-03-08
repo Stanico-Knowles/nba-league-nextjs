@@ -129,7 +129,7 @@ export default async function page({ params }: { params: { teamID: string } }) {
               </div>
             </div>
           </div>
-          <div className="space-y-8 ml-2">
+          <div className="space-y-8 sm:ml-2">
             <div>
               <p className="text-lg font-medium">{team.team.standingSummary}</p>
             </div>
@@ -140,18 +140,18 @@ export default async function page({ params }: { params: { teamID: string } }) {
                     <h4 className="text-xl font-bold mb-4">
                       {item.description}
                     </h4>
-                    <table>
+                    <table className="w-full">
                       {item.stats.map((stat) => {
                         return (
-                          <div key={stat.name} className="flex flex-row">
-                            <thead className="w-48 border border-gray-200">
+                          <div key={stat.name} className="flex flex-col sm:flex-row">
+                            <thead className="w-full sm:w-48 border border-gray-200">
                               <tr>
                                 <th className="text-base font-bold px-2 py-1">
                                   {camelCaseToTitleCase(stat.name)}
                                 </th>
                               </tr>
                             </thead>
-                            <tbody className="w-48 border border-gray-200">
+                            <tbody className="w-full sm:w-48 border border-gray-200">
                               <tr>
                                 <td className="px-2 py-1">
                                   {convertToTwoDecimalPlaces(
