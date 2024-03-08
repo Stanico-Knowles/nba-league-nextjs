@@ -1,8 +1,9 @@
 import Layout from "@/components/Layout";
+import NewsContainer from "@/components/sidebar/NewsContainer";
 
 export default function Home() {
   return (
-    <Layout>
+    <Layout page="home">
       <></>
     </Layout>
   );
