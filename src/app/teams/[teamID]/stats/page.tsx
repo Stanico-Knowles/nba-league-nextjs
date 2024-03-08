@@ -45,27 +45,40 @@ export default async function page({ params }: { params: { teamID: string } }) {
       eventId: game.id,
       status:
         game.status.type.state === "pre"
-          ? game.status.type.shortDetail
+          ? `Next game: ${game.status.type.shortDetail}`
           : game.status.type.name === "STATUS_HALFTIME"
-          ? "Halftime"
+          ? "Playing now: Halftime"
           : game.status.type.name === "STATUS_FINAL"
           ? "Final"
-          : `Q${game.status.period} ${game.status.displayClock}`,
+          : `Playing now: Q${game.status.period} ${game.status.displayClock}`,
       homeTeam: toCompetitorInterface(homeTeam),
       awayTeam: toCompetitorInterface(awayTeam),
     };
   })[0];
 
+  const camelCaseToTitleCase = (camelCaseString: string): string => {
+    const titleCaseString = camelCaseString.replace(/([A-Z])/g, " $1").trim();
+    return titleCaseString.charAt(0).toUpperCase() + titleCaseString.slice(1);
+  };
+
+  const convertToTwoDecimalPlaces = (number: string): string => {
+    if (Number.isInteger(number)) {
+      return number;
+    } else {
+      return parseFloat(number).toFixed(2);
+    }
+  };
+
   return (
-    <Layout>
-      <div className="max-w-2xl mx-auto">
+    <Layout page="teamStats">
+      <div className="max-w-2xl px-4 mx-auto">
         <div>
           <h1 className="text-4xl font-bold">{team.team.displayName}</h1>
         </div>
         <div>
-          <div className="flex flex-col border-x lg:border-x-0 border-y border-gray-200 pt-4 pb-2 my-8">
+          <div className="flex flex-col border-y border-gray-200 pt-4 pb-2 my-8">
             <div className="flex flex-row text-xs text-red-500 font-medium mb-2">
-              <p className="text-base ml-2">Playing next: {nextGame.status}</p>
+              <p className="text-base ml-2">{nextGame.status}</p>
             </div>
             <div className="flex flex-row items-center space-x-2">
               <div>
@@ -115,6 +128,46 @@ export default async function page({ params }: { params: { teamID: string } }) {
                 {nextGame.awayTeam.score}
               </div>
             </div>
+          </div>
+          <div className="space-y-8 ml-2">
+            <div>
+              <p className="text-lg font-medium">{team.team.standingSummary}</p>
+            </div>
+            <>
+              {team.team.record.items.map((item) => {
+                return (
+                  <div key={item.description}>
+                    <h4 className="text-xl font-bold mb-4">
+                      {item.description}
+                    </h4>
+                    <table>
+                      {item.stats.map((stat) => {
+                        return (
+                          <div key={stat.name} className="flex flex-row">
+                            <thead className="w-48 border border-gray-200">
+                              <tr>
+                                <th className="text-base font-bold px-2 py-1">
+                                  {camelCaseToTitleCase(stat.name)}
+                                </th>
+                              </tr>
+                            </thead>
+                            <tbody className="w-48 border border-gray-200">
+                              <tr>
+                                <td className="px-2 py-1">
+                                  {convertToTwoDecimalPlaces(
+                                    String(stat.value)
+                                  )}
+                                </td>
+                              </tr>
+                            </tbody>
+                          </div>
+                        );
+                      })}
+                    </table>
+                  </div>
+                );
+              })}
+            </>
           </div>
         </div>
       </div>
