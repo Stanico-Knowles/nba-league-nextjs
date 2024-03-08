@@ -24,7 +24,7 @@ This project was inspired by [leerob/ncaam](https://github.com/leerob/ncaam), a 
 
 ## Contributors ✨
 
-Thanks go to my wonderful contributor, without him I am nothing:
+Thanks go to my wonderful contributor for adding the project's demo link to this doc. Great job Quincy 😆. P.S. One of the greatest Development managers to work this green earth.  
 
 <table>
   <tbody>
