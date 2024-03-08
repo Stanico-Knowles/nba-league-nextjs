@@ -45,24 +45,36 @@ const Navbar = () => {
             News
           </a>
           <a href="#" className="text-white font-medium tracking-wider">
-            Favorite Team
+            Games
           </a>
         </div>
 
         {/* Mobile Menu */}
         {isMenuOpen && (
           <div className="lg:hidden absolute top-20 left-0 right-0 bg-gray-800 p-4 z-40 space-y-6">
-            <a href="/teams" className="block text-white text-lg font-medium mb-2 tracking-wide">
+            <a
+              href="/teams"
+              className="block text-white text-lg font-medium mb-2 tracking-wide"
+            >
               Teams
             </a>
-            <a href="#" className="block text-white text-lg font-medium mb-2 tracking-wide">
+            <a
+              href="#"
+              className="block text-white text-lg font-medium mb-2 tracking-wide"
+            >
               Schedule
             </a>
-            <a href="#" className="block text-white text-lg font-medium mb-2 tracking-wide">
+            <a
+              href="#"
+              className="block text-white text-lg font-medium mb-2 tracking-wide"
+            >
               News
             </a>
-            <a href="#" className="block text-white text-lg font-medium mb-2 tracking-wide">
-              Favorite Team
+            <a
+              href="#"
+              className="block text-white text-lg font-medium mb-2 tracking-wide"
+            >
+              Games
             </a>
           </div>
         )}
