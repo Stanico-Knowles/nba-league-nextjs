@@ -11,7 +11,7 @@ interface Game {
   awayTeam: Competitor;
 }
 
-interface Competitor {
+export interface Competitor {
   id: string;
   abbreviation: string;
   fullName: string;
