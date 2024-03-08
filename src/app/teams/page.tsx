@@ -1,9 +1,14 @@
 import Layout from "@/components/Layout";
 import { Teams } from "@/schemas/teams";
 import { ArrowTopRightOnSquareIcon } from "@heroicons/react/20/solid";
+import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { z } from "zod";
+
+export const metadata: Metadata = {
+  title: "Teams",
+};
 
 export default async function page() {
   const resp = await fetch(
@@ -13,7 +18,7 @@ export default async function page() {
   const data: z.infer<typeof Teams> = await resp.json();
   const teams = data.sports[0].leagues[0].teams;
   return (
-    <Layout>
+    <Layout page="teams">
       <div className="bg-white rounded-md mx-auto flex justify-center">
         <ul role="list" className="grid grid-cols-1 sm:grid-cols-2">
           <>
@@ -72,12 +77,13 @@ export default async function page() {
                           Tickets
                         </Link>
                       </div>
-                      <button
-                        className="w-fit ml-1 sm:ml-2 px-2 rounded-md text-white text-sm hover:opacity-90"
+                      <Link
+                        href={`/teams/${team.team.id}/stats`}
+                        className="w-fit ml-1 sm:ml-2 px-2 rounded-md text-white text-xs hover:opacity-90"
                         style={dynamicStyle}
                       >
-                        + Follow
-                      </button>
+                        Statistics
+                      </Link>
                     </div>
                   </div>
                 </li>
