@@ -2,15 +2,25 @@ import React from "react";
 import { z } from "zod";
 import { News } from "@/schemas/news";
 import Image from "next/image";
+import clsx from "clsx";
 
-export default async function NewsContainer() {
+export default async function NewsContainer({
+  side = false,
+}: {
+  side?: boolean;
+}) {
   const resp = await fetch(
     "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/news",
     { next: { revalidate: 15 } }
   );
   const news: z.infer<typeof News> = await resp.json();
   return (
-    <div className="max-w-2xl px-4 lg:px-8 mx-auto">
+    <div
+      className={clsx(
+        "max-w-2xl px-4 mx-auto",
+        side ? "lg:px-2 pt-6" : "lg:px-8"
+      )}
+    >
       <div className="mb-3">
         <h2 className="text-2xl font-bold uppercase">Headlines</h2>
       </div>
