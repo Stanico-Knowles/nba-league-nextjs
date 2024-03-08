@@ -45,12 +45,12 @@ export default async function Layout({
         <Navbar />
       </header>
 
-      <div className="mx-auto flex w-full items-start lg:gap-x-8 px-0 lg:px-4 lg:py-10">
+      <div className="mx-auto flex w-full items-start lg:gap-x-8 px-0 lg:px-4">
         <aside className="sticky top-8 hidden w-44 max-h-screen shrink-0 lg:block overflow-y-auto no-scrollbar">
           <ScoreContainer data={scores} />
         </aside>
 
-        <main className="flex-1">
+        <main className="flex-1 bg-gray-50/10 border-x border-x-gray-200 lg:py-10">
           <div className="block mx-auto lg:hidden w-screen">
             <ScoreContainer data={scores} flowDirection="row" />
           </div>
@@ -60,16 +60,16 @@ export default async function Layout({
         </main>
 
         <aside className="sticky top-8 hidden w-96 max-h-screen shrink-0 xl:block overflow-y-auto no-scrollbar">
-          {/* This is my stretching content because the available data is a bit limited lol */}
+          {/* This is me stretching content because the available data is a bit limited lol */}
           {page && newsSideBarPages.includes(page) ? (
-            <NewsContainer />
+            <NewsContainer side={true} />
           ) : (
             <div className="pt-6">
               <h4 className="text-lg font-bold mb-4">
                 Check in with your favorite team
               </h4>
               <div>
-                <ul>
+                <ul className="divide-y">
                   <>
                     {teamsList.map((team) => {
                       const dynamicStyle = {
