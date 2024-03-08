@@ -37,6 +37,8 @@ export default async function Layout({
 
   const teamsList = teams.sports[0].leagues[0].teams;
 
+  const newsSideBarPages = ["teams", "teamStats"];
+
   return (
     <div className="flex min-h-full flex-col">
       <header>
@@ -59,7 +61,7 @@ export default async function Layout({
 
         <aside className="sticky top-8 hidden w-96 max-h-screen shrink-0 xl:block overflow-y-auto no-scrollbar">
           {/* This is my stretching content because the available data is a bit limited lol */}
-          {page === "teams" ? (
+          {page && newsSideBarPages.includes(page) ? (
             <NewsContainer />
           ) : (
             <div className="pt-6">
